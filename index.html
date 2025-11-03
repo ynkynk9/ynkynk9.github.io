@@ -1,29 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to My Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Qijing Zhang — Resume & Portfolio | 张启靖 — 简历与作品集</title>
   <style>
+    :root {
+      --bg: #0f172a;           /* slate-900 */
+      --panel: #111827cc;      /* gray-900/80 */
+      --text: #e5e7eb;         /* gray-200 */
+      --muted: #94a3b8;        /* slate-400 */
+      --brand: #22d3ee;        /* cyan-400 */
+      --brand-2: #a78bfa;      /* violet-400 */
+      --chip: #1f2937;         /* gray-800 */
+      --card: #0b1220;         /* slightly darker */
+      --border: #1f2a44;       
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      text-align: center;
-      padding-top: 50px;
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC", "Noto Sans CJK SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 20% 0%, #0b1325, #0a1020 40%, #070b18 70%, #050910 100%), var(--bg);
+      color: var(--text);
     }
-    h1 {
-      color: #222;
-    }
-    a {
-      color: #007acc;
-      text-decoration: none;
-    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 24px; }
+    header { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; font-weight: 700; color: #0b1220; }
+    .title { line-height: 1.15; }
+    .title h1 { font-size: 1.5rem; margin: 0; }
+    .title p { margin: 6px 0 0; color: var(--muted); font-size: 0.95rem; }
+
+    .controls { display: flex; gap: 10px; }
+    .chip { background: var(--chip); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 999px; cursor: pointer; font-weight: 600; }
+    .chip[aria-pressed="true"] { background: linear-gradient(135deg, #1f2a44, #16233c); border-color: #2b3f66; box-shadow: 0 0 0 2px #0b1320 inset; }
+
+    .tabs { display: flex; gap: 8px; margin: 8px 0 18px; }
+    .tab { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 12px; cursor: pointer; font-weight: 700; }
+    .tab[aria-selected="true"] { background: linear-gradient(135deg, #12203b, #151e32); border-color: #2b3f66; }
+
+    .panel { background: linear-gradient(180deg, #0d1628 0%, #0a1222 100%); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 880px) { .grid { grid-template-columns: 1.1fr 1fr; } }
+
+    h2 { margin: 10px 0 14px; border-bottom: 1px dashed var(--border); padding-bottom: 6px; }
+    h3 { margin: 10px 0 6px; }
+    .muted { color: var(--muted); font-size: 0.95rem; }
+    ul { margin: 6px 0 12px 18px; }
+    li { margin: 4px 0; }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
+    .tag { display: inline-block; background: #18243c; color: #cbe7ff; border: 1px solid #253a60; padding: 4px 10px; border-radius: 999px; margin: 4px 6px 0 0; font-size: 12px; }
+    .project { display: grid; gap: 8px; }
+
+    footer { margin: 26px 0 10px; text-align: center; color: var(--muted); font-size: 12px; }
   </style>
 </head>
 <body>
-  <h1>Hello, I’m Zhien Li (ynkynk9)</h1>
-  <p>Welcome to my portfolio site!</p>
-  <p>Explore my projects on <a href="https://github.com/ynkynk9" target="_blank">GitHub</a>.</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="avatar">QZ</div>
+        <div class="title">
+          <h1>Qijing Zhang · 张启靖</h1>
+          <p>Digital Media Educator · Data Visualization · Web-based Learning Design</p>
+        </div>
+      </div>
+      <div class="controls" role="group" aria-label="Language">
+        <button class="chip" id="btn-en" aria-pressed="true">English</button>
+        <button class="chip" id="btn-zh" aria-pressed="false">中文</button>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab" id="tab-resume" aria-selected="true">Resume / 简历</button>
+      <button class="tab" id="tab-portfolio" aria-selected="false">Portfolio / 作品集</button>
+    </nav>
+
+    <!-- RESUME PANEL -->
+    <section id="panel-resume" class="panel" role="tabpanel" aria-labelledby="tab-resume">
+      <div class="grid">
+        <div>
+          <h2 class="en">Professional Summary</h2>
+          <h2 class="zh" style="display:none">专业概述</h2>
+          <p class="en muted">Educator and researcher in digital media and web-based learning design, with hands-on experience in data visualization and interactive technologies across academia and industry.</p>
+          <p class="zh muted" style="display:none">专注数字媒体与基于网络的学习设计的教师与研究者，融合数据可视化与交互技术，兼具高校与产业的实战经验。</p>
+
+          <h2 class="en">Education</h2>
+          <h2 class="zh" style="display:none">教育背景</h2>
+          <div class="card">
+            <h3>New York University — M.Sc. Integrated Digital Media</h3>
+            <p class="muted">2013 – 2015 · New York, USA</p>
+            <p class="muted en">Thesis: Web-based Interactive Media</p>
+            <p class="muted zh" style="display:none">论文：基于网络的交互媒体</p>
+          </div>
+          <div class="card" style="margin-top:10px;">
+            <h3>Communication University of China — B.Eng. TV & Video Broadcast Engineering</h3>
+            <p class="muted">2006 – 2010 · Nanjing/Beijing, China</p>
+          </div>
+
+          <h2 class="en">Selected Publications</h2>
+          <h2 class="zh" style="display:none">发表与成果（节选）</h2>
+          <ul>
+            <li class="en">Zhang, Q. <em>Web-based Interactive VR Design: 3D Panoramic Campus for Culture Building</em>, New Education, Aug 2022: 34–36.</li>
+            <li class="zh" style="display:none">张启靖：《基于网络的交互式 VR 设计——校园文化建设中的 3D 全景展示》，《新教育》，2022 年 8 月：34–36。</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="en">Contact</h2>
+          <h2 class="zh" style="display:none">联系方式</h2>
+          <div class="card">
+            <p>Maastricht · NL</p>
+            <p><a href="mailto:qijingz908@gmail.com">qijingz908@gmail.com</a> · +31 645845518</p>
+            <p><a href="https://github.com/ynkynk9" target="_blank">github.com/ynkynk9</a></p>
+          </div>
+
+          <h2 style="margin-top:14px" class="en">Skills</h2>
+          <h2 style="margin-top:14px; display:none" class="zh">技能</h2>
+          <div class="card">
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Web Design</span>
+            <span class="tag">Interactive Media</span>
+            <span class="tag">Python · Pandas</span>
+            <span class="tag">HTML/CSS/JS</span>
+            <span class="tag">Product Management</span>
+            <span class="tag">PBL Teaching</span>
+          </div>
+
+          <h2 style="margin-top:14px" class="en">Awards & Mentoring</h2>
+          <h2 style="margin-top:14px; display:none" class="zh">奖项与指导</h2>
+          <ul>
+            <li class="en">Students won provincial 2nd prize (Mobile App Dev, 2022) & national AR/VR competition awards.</li>
+            <li class="zh" style="display:none">指导学生获省级移动应用开发大赛二等奖、全国增强与虚拟现实大赛二等奖等。</li>
+            <li class="en">Municipal Outstanding Teacher.</li>
+            <li class="zh" style="display:none">市级“优秀教师”。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 style="margin-top:8px" class="en">Professional Experience</h2>
+      <h2 style="margin-top:8px; display:none" class="zh">工作经历（精要）</h2>
+
+      <div class="grid">
+        <div class="card project">
+          <h3>Assistant Professor — Tarim University of Technology</h3>
+          <p class="muted">11/2024 – 05/2025 · Xinjiang, China</p>
+          <ul>
+            <li class="en">Teaching foundational digital media & programming; mentoring new faculty in instructional design.</li>
+            <li class="zh" style="display:none">承担数字媒体与编程基础课程；指导新入职教师进行教学设计与备课。</li>
+          </ul>
+        </div>
+        <div class="card project">
+          <h3>Assistant Professor — Guiyang Preschool Education College</h3>
+          <p class="muted">11/2019 – 10/2024 · Guiyang, China</p>
+          <ul>
+            <li class="en">Courses: Interactive/Web Design, Web-based Data Visualization, Data Structures, HTTP.</li>
+            <li class="zh" style="display:none">主授课程：交互/网页设计、网络数据可视化、数据结构、HTTP 协议等。</li>
+            <li class="en">Founded GPEC Media Lab; academic administration & curriculum development.</li>
+            <li class="zh" style="display:none">创立 GPEC Media Lab；承担教务与课程建设。</li>
+          </ul>
+        </div>
+        <div class="card project">
+          <h3>Product Manager — Wangsu Technology (Xiamen)</h3>
+          <p class="muted">10/2016 – 01/2019 · Xiamen, China</p>
+          <ul>
+            <li class="en">Feature planning, PRD, market & competitor analysis; solution enablement with sales.</li>
+            <li class="zh" style="display:none">负责功能规划与 PRD、市场与竞品分析；联合销售推进解决方案。</li>
+          </ul>
+        </div>
+        <div class="card project">
+          <h3>Program Manager — Platinum Maintenance Services</h3>
+          <p class="muted">08/2015 – 09/2016 · New York, USA</p>
+          <ul>
+            <li class="en">Organized 500‑attendee events; secured $40k+/year grants; digital marketing ops.</li>
+            <li class="zh" style="display:none">统筹 500 人规模活动；年获 4 万美元以上资助；负责数字营销运营。</li>
+          </ul>
+        </div>
+        <div class="card project">
+          <h3>Digital Marketer — CareerTu</h3>
+          <p class="muted">07/2015 – 09/2016 · New York, USA</p>
+          <ul>
+            <li class="en">Landing pages, SEO, analytics; improved CTR & conversions across 4000+ pages.</li>
+            <li class="zh" style="display:none">搭建落地页、SEO 与数据分析；提升 4000+ 页面的点击率与转化率。</li>
+          </ul>
+        </div>
+        <div class="card project">
+          <h3>Physics Teacher — New Oriental</h3>
+          <p class="muted">07/2010 – 01/2013 · Nanjing, China</p>
+          <ul>
+            <li class="en">Taught SAT/AP Physics; led teaching research and personalized study plans.</li>
+            <li class="zh" style="display:none">任教 SAT/AP 物理；主导教研并制定个性化学习方案。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO PANEL -->
+    <section id="panel-portfolio" class="panel" role="tabpanel" aria-labelledby="tab-portfolio" style="display:none">
+      <div class="grid">
+        <div>
+          <h2 class="en">Featured Projects</h2>
+          <h2 class="zh" style="display:none">精选项目</h2>
+
+          <div class="card project">
+            <h3>Web-based Interactive VR · 3D Campus</h3>
+            <p class="muted en">Interactive VR experience for campus culture building; research published in <em>New Education</em> (2022).</p>
+            <p class="muted zh" style="display:none">用于校园文化展示的交互式 VR（3D 全景），相关研究发表于《新教育》（2022）。</p>
+          </div>
+
+          <div class="card project">
+            <h3>Teaching — Web Data Visualization</h3>
+            <p class="muted en">Course design with PBL; Python/JS visualization pipelines; student projects & competition coaching.</p>
+            <p class="muted zh" style="display:none">项目式数据可视化课程设计；Python/JS 可视化流程；学生项目与竞赛指导。</p>
+          </div>
+
+          <div class="card project">
+            <h3>GPEC Media Lab</h3>
+            <p class="muted en">Founded a student-centered media lab focusing on interaction, visualization and web R&D.</p>
+            <p class="muted zh" style="display:none">面向学生的媒体实验室，聚焦交互、可视化与 Web 研发。</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="en">Links</h2>
+          <h2 class="zh" style="display:none">链接</h2>
+          <div class="card">
+            <ul>
+              <li><a href="https://github.com/ynkynk9" target="_blank">GitHub · ynkynk9</a></li>
+              <li><a href="#" target="_blank">Portfolio PDF (coming soon)</a></li>
+              <li><a href="#" target="_blank">Teaching demos (coming soon)</a></li>
+            </ul>
+          </div>
+
+          <h2 style="margin-top:14px" class="en">Tech Stack</h2>
+          <h2 style="margin-top:14px; display:none" class="zh">技术栈</h2>
+          <div class="card">
+            <span class="tag">Python · Pandas</span>
+            <span class="tag">Matplotlib/Seaborn</span>
+            <span class="tag">HTML/CSS/JS</span>
+            <span class="tag">Three.js (VR)</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Jupyter</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Qijing Zhang · Built with GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    const btnEn = document.getElementById('btn-en');
+    const btnZh = document.getElementById('btn-zh');
+    const enEls = document.querySelectorAll('.en');
+    const zhEls = document.querySelectorAll('.zh');
+    const tabResume = document.getElementById('tab-resume');
+    const tabPortfolio = document.getElementById('tab-portfolio');
+    const panelResume = document.getElementById('panel-resume');
+    const panelPortfolio = document.getElementById('panel-portfolio');
+
+    function setLang(lang) {
+      const en = lang === 'en';
+      enEls.forEach(el => el.style.display = en ? '' : 'none');
+      zhEls.forEach(el => el.style.display = en ? 'none' : '');
+      btnEn.setAttribute('aria-pressed', en);
+      btnZh.setAttribute('aria-pressed', !en);
+      document.documentElement.lang = en ? 'en' : 'zh-Hans';
+      document.title = en ? 'Qijing Zhang — Resume & Portfolio' : '张启靖 — 简历与作品集';
+    }
+
+    function selectTab(which) {
+      const isResume = which === 'resume';
+      tabResume.setAttribute('aria-selected', isResume);
+      tabPortfolio.setAttribute('aria-selected', !isResume);
+      panelResume.style.display = isResume ? '' : 'none';
+      panelPortfolio.style.display = isResume ? 'none' : '';
+    }
+
+    btnEn.addEventListener('click', () => setLang('en'));
+    btnZh.addEventListener('click', () => setLang('zh'));
+    tabResume.addEventListener('click', () => selectTab('resume'));
+    tabPortfolio.addEventListener('click', () => selectTab('portfolio'));
+
+    // init
+    setLang('en');
+    selectTab('resume');
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
