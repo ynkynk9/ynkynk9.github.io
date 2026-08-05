@@ -1,0 +1,85 @@
+.case-dialog {
+  overflow-y: auto;
+}
+
+.collection-image-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.collection-image-button img {
+  display: block;
+  width: 100%;
+  height: clamp(170px, 20vw, 260px);
+  object-fit: cover;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.collection-image-button > span {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  padding: 7px 12px;
+  border-radius: 2px;
+  background: rgba(24, 24, 23, .88);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.collection-image-button:hover img,
+.collection-image-button:focus-visible img {
+  transform: scale(1.015);
+  opacity: .86;
+}
+
+.collection-image-button:hover > span,
+.collection-image-button:focus-visible > span {
+  opacity: 1;
+  transform: none;
+}
+
+.campus-dialog .case-image {
+  width: min(100%, 680px);
+  height: auto;
+  max-height: 360px;
+  margin-right: auto;
+  margin-left: auto;
+  object-fit: contain;
+}
+
+.campus-architecture {
+  display: block;
+  width: min(100%, 440px);
+  height: auto;
+  margin: 18px auto 4px;
+  background: var(--surface);
+}
+
+@media (max-width: 700px) {
+  .collection-image-button img {
+    height: 190px;
+  }
+
+  .campus-dialog .case-image {
+    max-height: 250px;
+  }
+
+  .collection-image-button > span {
+    opacity: 1;
+    transform: none;
+  }
+}
