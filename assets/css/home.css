@@ -1,0 +1,6 @@
+.about-copy {
+  max-width: 720px;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.65;
+  letter-spacing: -.025em;
+}
