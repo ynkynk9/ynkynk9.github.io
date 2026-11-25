@@ -2,28 +2,27 @@
 
 A calm, editorial personal website for a product manager and UX designer with experience in digital media, data visualization and higher education.
 
+Live at <https://ynkynk9.github.io/>
+
 ## Structure
 
-- `index.html` — Portfolio homepage with four project case-study dialogs
-- `resume.html` — Web resume
+- `index.html` — Portfolio homepage
+- `resume.html` — Web resume (with downloadable PDF `Qijing_Zhang_CV_2026_1.0.pdf`)
 - `contact.html` — Contact details
-- `assets/css/` — shared styling
-- `assets/js/` — navigation and accessible case-study dialogs
-- `assets/images/` — replaceable SVG placeholders
+- `collections/interactive-data-visualization.html` — Pop Bike, D3.js, Tableau and Power BI work
+- `collections/teaching-ux-design.html` — Teaching outcomes and the 3D campus project
+- `assets/css/` — `style.css` (shared), `home.css` (homepage), `teaching-ux.css` (teaching collection)
+- `assets/js/site.js` — navigation, homepage hero background and collection layout
+- `assets/images/` — project images (JPEG) and placeholder SVGs
+- `archive/2025-08/` — the previous version of the site
 
-The site intentionally has only three pages. Project details open in accessible dialogs on the portfolio page, so they do not create additional top-level pages.
+The Pop Bike project is hosted separately in the [Popbike-Reborn](https://github.com/ynkynk9/Popbike-Reborn) repository and linked from the data visualization collection.
 
-## Publish to GitHub Pages
+## Publishing
 
-1. Copy all files in this folder to the root of the `ynkynk9.github.io` repository.
-2. Commit and push to the `main` branch.
-3. In **Settings → Pages**, select **Deploy from a branch**, then choose `main` and `/ (root)`.
+GitHub Pages deploys the `main` branch from the repository root. No build step is required: commit and push to `main`.
 
-No build step is required.
+## To do
 
-## Before publishing
-
-- Replace `assets/images/portrait-placeholder.svg` with a professional portrait, keeping the same filename or updating the image path in `index.html`.
-- Replace the four project placeholder SVGs with project screenshots when available.
-- Add the LinkedIn profile URL wherever the current placeholder link appears.
-- Add the final PDF resume and replace the Download PDF placeholder link in `resume.html`.
+- Replace the remaining placeholder images (D3.js, Tableau, Power BI, web design, WebVR, GPEC Lab) with project screenshots.
+- Keep new images as compressed JPEGs around 1600px wide.
